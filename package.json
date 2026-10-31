@@ -1,0 +1,38 @@
+{
+  "name": "rolldown-plugin-raw-template",
+  "version": "0.0.0",
+  "description": "Import assets as template literals (template strings).",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Jason Kwok <hello@jasonhk.me> (https://jasonhk.me/)",
+  "main": "./dist/index.mjs",
+  "scripts": {
+    "build": "tsdown"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.13",
+    "@types/node": "^26.6.6",
+    "rolldown": "^1.2.16",
+    "tsdown": "^0.23.4",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "error",
+      "version": "12.x"
+    }
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./client": {
+      "types": "./dist/client.d.mts"
+    }
+  },
+  "types": "./dist/index.d.mts"
+}
