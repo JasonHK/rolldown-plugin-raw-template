@@ -3,6 +3,15 @@ import type { Plugin } from "vite";
 
 const SUFFIX = "?raw-template";
 
+export interface RawTemplatePlugin
+{
+    name: string;
+    enforce: "pre";
+    resolveId(source: string, importer: string | undefined): Promise<string | null>;
+    load(id: string): Promise<string | null>;
+}
+
+export default function rawTemplate(): RawTemplatePlugin
 export default function rawTemplate(): Plugin
 {
     return {
