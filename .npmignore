@@ -1,6 +1,15 @@
+# Source Code
 src/
 
+# Test Files
+test/
+
+# Coverage Report
+coverage/
+
+# Configurations
 .gitignore
 .npmignore
 tsconfig.json
 tsdown.config.ts
+vitest.config.ts
