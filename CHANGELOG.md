@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/JasonHK/rolldown-plugin-raw-template/compare/v0.1.0...v0.1.1) (2026-10-31)
+
+
+### Bug Fixes
+
+* broken client types ([#1](https://github.com/JasonHK/rolldown-plugin-raw-template/issues/1)) ([9b1f3f1](https://github.com/JasonHK/rolldown-plugin-raw-template/commit/9b1f3f1d0981f8b3152c425bdd01fe4633a1dd62))
+
 ## 0.1.0 (2026-10-31)
 
 ### Features
