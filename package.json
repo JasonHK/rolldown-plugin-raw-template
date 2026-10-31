@@ -14,7 +14,8 @@
   "scripts": {
     "build": "tsdown",
     "coverage": "vitest run --coverage",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:types": "tsc"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.13",
