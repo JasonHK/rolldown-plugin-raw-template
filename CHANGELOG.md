@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/JasonHK/rolldown-plugin-raw-template/compare/v0.1.1...v0.1.2) (2026-10-31)
+
+
+### Bug Fixes
+
+* regression on exports field in package.json ([#3](https://github.com/JasonHK/rolldown-plugin-raw-template/issues/3)) ([80e84cf](https://github.com/JasonHK/rolldown-plugin-raw-template/commit/80e84cf09e145bab05c2b5eb9ebcacb7e7108a3c))
+
 ## [0.1.1](https://github.com/JasonHK/rolldown-plugin-raw-template/compare/v0.1.0...v0.1.1) (2026-10-31)
 
 
