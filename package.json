@@ -2,7 +2,12 @@
   "name": "rolldown-plugin-raw-template",
   "version": "0.0.0",
   "description": "Import assets as template literals (template strings).",
-  "keywords": [],
+  "keywords": [
+    "plugin",
+    "rolldown",
+    "rolldown-plugin",
+    "vite-plugin"
+  ],
   "license": "MIT",
   "author": "Jason Kwok <hello@jasonhk.me> (https://jasonhk.me/)",
   "main": "./dist/index.mjs",
