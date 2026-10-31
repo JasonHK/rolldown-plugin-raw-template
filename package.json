@@ -1,6 +1,6 @@
 {
   "name": "rolldown-plugin-raw-template",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Import assets as template literals (template strings).",
   "keywords": [
     "plugin",
@@ -8,9 +8,17 @@
     "rolldown-plugin",
     "vite-plugin"
   ],
+  "homepage": "https://github.com/JasonHK/rolldown-plugin-raw-template",
+  "bugs": {
+    "url": "https://github.com/JasonHK/rolldown-plugin-raw-template/issues"
+  },
   "license": "MIT",
   "author": "Jason Kwok <hello@jasonhk.me> (https://jasonhk.me/)",
   "main": "./dist/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonHK/rolldown-plugin-raw-template.git"
+  },
   "scripts": {
     "build": "tsdown",
     "coverage": "vitest run --coverage",
