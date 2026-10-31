@@ -8,8 +8,11 @@ test/
 coverage/
 
 # Configurations
+.github/
 .gitignore
 .npmignore
+.release-please-manifest.json
+release-please-config.json
 tsconfig.json
 tsdown.config.ts
 vitest.config.ts

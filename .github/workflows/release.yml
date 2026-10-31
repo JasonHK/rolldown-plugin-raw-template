@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  prepare_release:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release_please.outputs.releases_created }}
+      tag_name: ${{ steps.release_please.outputs.tag_name }}
+    steps:
+      - id: release_please
+        name: Prepare release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
+        with:
+          skip-github-pull-request: true
+
+  release:
+    name: Publish release
+    needs: prepare_release
+    if: needs.prepare_release.outputs.releases_created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Check out master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Test package
+        run: pnpm test
+
+      - name: Check types
+        run: pnpm test:types
+
+      - name: Build package
+        run: pnpm build
+
+      - name: Stage package on npm
+        run: pnpm stage publish .
+
+      - name: Pack npm tarball
+        run: mkdir -p release && pnpm pack --pack-destination release
+
+      - name: Upload tarball to GitHub release
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64
+        with:
+          tag_name: ${{ needs.prepare_release.outputs.tag_name }}
+          draft: true
+          files: release/*.tgz
+          fail_on_unmatched_files: true
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${{ needs.prepare_release.outputs.tag_name }}" --draft=false
+
+  draft_next_release:
+    name: Draft next release
+    needs:
+      - prepare_release
+      - release
+    if: always() && (needs.prepare_release.result == 'success') && ((needs.release.result == 'success') || (needs.release.result == 'skipped'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Draft release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
+        with:
+          skip-github-release: true
