@@ -61,7 +61,7 @@
       "import": "./dist/index.mjs"
     },
     "./client": {
-      "types": "./dist/client.d.mts"
+      "types": "./dist/client.d.ts"
     }
   },
   "types": "./dist/index.d.mts"
